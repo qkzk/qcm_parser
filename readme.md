@@ -18,8 +18,25 @@ un pdf
 Un QCM est constitué de :
 
 * Entête
-* Partie : `##` 
-* Question : `###` puis bloc de texte
+
+  ```markdown
+  ---
+  title: "Exemple de QCM"
+  subtitle: "pour tester l'application"
+  author: "qkzk"
+  date: "2021/05/23"
+  theme: "metropolis"
+  geometry: "margin=1.5cm"
+  header-includes: |
+      \usepackage{tcolorbox}
+      \newtcolorbox{myquote}{colback=teal!10!white, colframe=teal!55!black}
+      \renewenvironment{Shaded}{\begin{myquote}}{\end{myquote}}
+
+  ---
+  ```
+
+* Partie : `## partie truc` 
+* Question : `### Combien font 2+2 ?` puis bloc de texte `Choisissez la bonne réponse`
 * Réponses :
 
   ```md
