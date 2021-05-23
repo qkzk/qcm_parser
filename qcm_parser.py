@@ -9,8 +9,10 @@ parts, questions and answsers.
 Call it like that :
 
 ```bash
-$ python qcm_parser.py "work/qcm.md"
+$ python qcm_parser.py "work/qcm.md" 10
 ```
+
+where `10` is the number of copies you want to generate.
 
 It will generate "work/qcm_QUESTIONS.md" and "work/qcm_QUESTIONS.pdf" files.
 
@@ -81,7 +83,6 @@ header-includes:
     def read_header(self, end_header) -> str:
         """Read the header of the markdown file"""
         return "".join(self.lines[: end_header + 1])
-        # return self.CONSTANT_HEADER
 
     def read_part(self, start: int, end: int) -> "QCM_Part":
         """Returns a `QCM_Part` holding a part located between `start` and `end`"""
@@ -194,7 +195,7 @@ class QCM_Creator:
 
 
 def parse_args() -> tuple[str, int]:
-    """parse the args, raising an exception there's not 2 given args"""
+    """parse the args, raising an exception if there's not 2 given args"""
     if len(sys.argv) != 3:
         raise ValueError("I need a filename and and number")
 
@@ -211,8 +212,7 @@ def load_file(input_filename: str) -> list[str]:
 
 def read_qcm(file_content: list[str]) -> QCM_Content:
     """read and parse the content of the markdown file"""
-    qcm = QCM_Content(file_content)
-    return qcm
+    return QCM_Content(file_content)
 
 
 def generate_qcm(qcm_content: QCM_Content, nb_copy: int) -> str:
