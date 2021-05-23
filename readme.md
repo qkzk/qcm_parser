@@ -44,3 +44,9 @@ Un QCM est constitué de :
   - [ ] mauvaise réponse
 
   ```
+
+
+## Attention
+
+* L'entête doit contenir un champ `title: "blablabla"` qui partira dans l'entête,
+* Idéalement le QCM fait une page

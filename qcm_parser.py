@@ -30,15 +30,15 @@ class QCM_Content:
 theme: "metropolis"
 geometry: "margin=1.5cm"
 header-includes:
-- \\usepackage{fancyhdr}
-- \\pagestyle{fancy}
-- \\fancyhead[C]{QCM}
-- \\fancyhead[LE,LO,RE,RO]{}
-- \\fancyfoot[C]{\\thepage}
-- \\thispagestyle{fancy}
-- \\usepackage{tcolorbox}
-- \\newtcolorbox{myquote}{colback=teal!10!white, colframe=teal!55!black}
-- \\renewenvironment{Shaded}{\\begin{myquote}}{\\end{myquote}}
+- \\usepackage{{fancyhdr}} 
+- \\pagestyle{{fancy}} 
+- \\fancyhead[C]{{ {0} }}
+- \\fancyhead[LE,LO,RE,RO]{{}} 
+- \\fancyfoot[C]{{\\thepage}} 
+- \\thispagestyle{{fancy}} 
+- \\usepackage{{tcolorbox}} 
+- \\newtcolorbox{{myquote}}{{colback=teal!10!white, colframe=teal!55!black}}
+- \\renewenvironment{{Shaded}}{{\\begin{{myquote}}}}{{\\end{{myquote}}}}
 
 ---
 
@@ -50,17 +50,20 @@ header-includes:
 
     def separate_parts(self) -> tuple[str, list["QCM_Part"]]:
         """Returns the header and the parts of the QCM"""
-        end_header = self.find_end_header()
+        end_header, self.title = self.find_end_header_and_title()
         start_end_parts = self.find_start_end_parts(end_header)
         # header = self.read_header(end_header)
-        header = self.CONSTANT_HEADER
+        header = self.CONSTANT_HEADER.format(self.title)
         return header, [self.read_part(start, end) for start, end in start_end_parts]
 
-    def find_end_header(self) -> int:
+    def find_end_header_and_title(self) -> tuple[int, str]:
         """Locate the end of the header ('---') in the markdown content"""
+        title = ""
         for index, line in enumerate(self.lines):
+            if "title: " in line:
+                title = line[11:-1].strip().replace('"', "").replace("''", "")
             if index > 0 and line.startswith("---"):
-                return index
+                return index, title
         raise IndexError("No end of header found")
 
     def find_start_end_parts(self, end_header):
