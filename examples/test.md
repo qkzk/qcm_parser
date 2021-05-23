@@ -5,15 +5,21 @@ author: "qkzk"
 date: "2021/05/23"
 theme: "metropolis"
 geometry: "margin=1.5cm"
-header-includes: |
-    \usepackage{tcolorbox}
-    \newtcolorbox{myquote}{colback=teal!10!white, colframe=teal!55!black}
-    \renewenvironment{Shaded}{\begin{myquote}}{\end{myquote}}
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhead[CO,CE]{This is fancy header}
+- \fancyfoot[CO,CE]{And this is a fancy footer}
+- \fancyfoot[LE,RO]{\thepage}
+- \thispagestyle{fancy}
+- \usepackage{tcolorbox}
+- \newtcolorbox{myquote}{colback=teal!10!white, colframe=teal!55!black}
+- \renewenvironment{Shaded}{\begin{myquote}}{\end{myquote}}
 
 ---
 
 
-## partie 1
+## maths
 
 ### Calculer $1 +1$
 
@@ -21,13 +27,13 @@ header-includes: |
 - [ ] 3
 - [ ] 5
 
-### Évaluer `2 ** 3`
+### Calculer $2^3$
 
 - [x] 8
 - [ ] 6
 - [ ] 4
 
-## partie 2
+## info
 
 ### Évaluer `2 + 2 == 4`
 

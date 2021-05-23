@@ -1,17 +1,21 @@
+
 ---
-title: "Exemple de QCM"
-subtitle: "pour tester l'application"
-author: "qkzk"
-date: "2021/05/23"
 theme: "metropolis"
 geometry: "margin=1.5cm"
-header-includes: |
-    \usepackage{tcolorbox}
-    \newtcolorbox{myquote}{colback=teal!10!white, colframe=teal!55!black}
-    \renewenvironment{Shaded}{\begin{myquote}}{\end{myquote}}
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhead[C]{QCM}
+- \fancyhead[LE,LO,RE,RO]{}
+- \fancyfoot[C]{\thepage}
+- \thispagestyle{fancy}
+- \usepackage{tcolorbox}
+- \newtcolorbox{myquote}{colback=teal!10!white, colframe=teal!55!black}
+- \renewenvironment{Shaded}{\begin{myquote}}{\end{myquote}}
 
 ---
-## partie 2
+
+## info
 
 ### Évaluer `s` après l'exécution du code suivant :
 
@@ -24,18 +28,18 @@ for i in range(5):
 
 
 - [ ] 0
-- [ ] 10
 - [ ] 15
+- [ ] 10
 
 ### Évaluer `2 + 2 == 4`
 
 
 
 - [ ] Vrai
-- [ ] `True`
 - [ ] `TypeError`
+- [ ] `True`
 
-## partie 1
+## maths
 
 ### Calculer $1 +1$
 
@@ -45,27 +49,27 @@ for i in range(5):
 - [ ] 3
 - [ ] 2
 
-### Évaluer `2 ** 3`
+### Calculer $2^3$
 
 
 
-- [ ] 6
 - [ ] 4
 - [ ] 8
+- [ ] 6
 
 
 
 \newpage
 
-## partie 2
+## info
 
 ### Évaluer `2 + 2 == 4`
 
 
 
-- [ ] Vrai
-- [ ] `TypeError`
 - [ ] `True`
+- [ ] `TypeError`
+- [ ] Vrai
 
 ### Évaluer `s` après l'exécution du code suivant :
 
@@ -77,59 +81,59 @@ for i in range(5):
 ```
 
 
-- [ ] 10
 - [ ] 15
 - [ ] 0
+- [ ] 10
 
-## partie 1
-
-### Évaluer `2 ** 3`
-
-
-
-- [ ] 6
-- [ ] 4
-- [ ] 8
+## maths
 
 ### Calculer $1 +1$
 
 
 
+- [ ] 5
 - [ ] 3
 - [ ] 2
-- [ ] 5
+
+### Calculer $2^3$
+
+
+
+- [ ] 8
+- [ ] 4
+- [ ] 6
 
 
 
 \newpage
 
-## partie 1
+## maths
+
+### Calculer $2^3$
+
+
+
+- [ ] 4
+- [ ] 6
+- [ ] 8
 
 ### Calculer $1 +1$
 
 
 
+- [ ] 5
 - [ ] 3
 - [ ] 2
-- [ ] 5
 
-### Évaluer `2 ** 3`
-
-
-
-- [ ] 6
-- [ ] 8
-- [ ] 4
-
-## partie 2
+## info
 
 ### Évaluer `2 + 2 == 4`
 
 
 
+- [ ] `True`
 - [ ] Vrai
 - [ ] `TypeError`
-- [ ] `True`
 
 ### Évaluer `s` après l'exécution du code suivant :
 
@@ -141,8 +145,8 @@ for i in range(5):
 ```
 
 
-- [ ] 10
 - [ ] 15
+- [ ] 10
 - [ ] 0
 
 

@@ -25,6 +25,25 @@ from random import sample
 class QCM_Content:
     """Holds the content of a QCM"""
 
+    CONSTANT_HEADER = """
+---
+theme: "metropolis"
+geometry: "margin=1.5cm"
+header-includes:
+- \\usepackage{fancyhdr}
+- \\pagestyle{fancy}
+- \\fancyhead[C]{QCM}
+- \\fancyhead[LE,LO,RE,RO]{}
+- \\fancyfoot[C]{\\thepage}
+- \\thispagestyle{fancy}
+- \\usepackage{tcolorbox}
+- \\newtcolorbox{myquote}{colback=teal!10!white, colframe=teal!55!black}
+- \\renewenvironment{Shaded}{\\begin{myquote}}{\\end{myquote}}
+
+---
+
+"""
+
     def __init__(self, lines: list[str]):
         self.lines = lines
         self.header, self.parts = self.separate_parts()
@@ -33,7 +52,8 @@ class QCM_Content:
         """Returns the header and the parts of the QCM"""
         end_header = self.find_end_header()
         start_end_parts = self.find_start_end_parts(end_header)
-        header = self.read_header(end_header)
+        # header = self.read_header(end_header)
+        header = self.CONSTANT_HEADER
         return header, [self.read_part(start, end) for start, end in start_end_parts]
 
     def find_end_header(self) -> int:
@@ -58,6 +78,7 @@ class QCM_Content:
     def read_header(self, end_header) -> str:
         """Read the header of the markdown file"""
         return "".join(self.lines[: end_header + 1])
+        # return self.CONSTANT_HEADER
 
     def read_part(self, start: int, end: int) -> "QCM_Part":
         """Returns a `QCM_Part` holding a part located between `start` and `end`"""
