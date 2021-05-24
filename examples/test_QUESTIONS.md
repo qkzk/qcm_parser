@@ -7,7 +7,7 @@ header-includes:
 - \pagestyle{fancy} 
 - \fancyhead[C]{ pour tester l'application }
 - \fancyhead[LE,LO,RE,RO]{} 
-- \fancyfoot[C]{\thepage} 
+- \fancyfoot[C]{ } 
 - \thispagestyle{fancy} 
 - \usepackage{tcolorbox} 
 - \newtcolorbox{myquote}{colback=teal!10!white, colframe=teal!55!black}
@@ -15,15 +15,43 @@ header-includes:
 
 ---
 
+## maths
+
+### Calculer $1 +1$
+
+
+
+- [ ] 3
+- [ ] 2
+- [ ] 5
+
+### Calculer $2^3$
+
+
+
+- [ ] 8
+- [ ] 4
+- [ ] 6
+
+## anglais
+
+### Where is brian ?
+
+
+
+- [ ] house
+- [ ] car
+- [ ] kitchen
+
+### How do you do ?
+
+
+
+- [ ] Fine thank you
+- [ ] Hungry
+- [ ] Congratulations
+
 ## info
-
-### Évaluer `2 + 2 == 4`
-
-
-
-- [ ] Vrai
-- [ ] `TypeError`
-- [ ] `True`
 
 ### Évaluer `s` après l'exécution du code suivant :
 
@@ -36,32 +64,87 @@ for i in range(5):
 
 
 - [ ] 10
-- [ ] 0
 - [ ] 15
+- [ ] 0
 
-## maths
-
-### Calculer $2^3$
-
-
-
-- [ ] 8
-- [ ] 4
-- [ ] 6
-
-### Calculer $1 +1$
+### Évaluer `2 + 2 == 4`
 
 
 
-- [ ] 2
-- [ ] 5
-- [ ] 3
+- [ ] `True`
+- [ ] Vrai
+- [ ] `TypeError`
+
+## Histoire
+
+### Napoléon est un...
+
+
+
+- [ ] Grec
+- [ ] Monument
+- [ ] Corse
+
+### 1515
+
+
+
+
+- [ ] La commune de Paris
+- [ ] Le sacre de Charlemagne à Reims
+- [ ] Marignan
+
+## Géographie
+
+### Paris est une ville du...
+
+
+
+
+- [ ] Groenland
+- [ ] Texas
+- [ ] Kazaksthan
+
+### Capitale de la France ?
+
+
+
+- [ ] Hazebrouck
+- [ ] Ici c'est Paris
+- [ ] Lille, le LOSC !
 
 
 
 \newpage
 
+## Géographie
+
+### Paris est une ville du...
+
+
+
+
+- [ ] Texas
+- [ ] Groenland
+- [ ] Kazaksthan
+
+### Capitale de la France ?
+
+
+
+- [ ] Ici c'est Paris
+- [ ] Hazebrouck
+- [ ] Lille, le LOSC !
+
 ## info
+
+### Évaluer `2 + 2 == 4`
+
+
+
+- [ ] Vrai
+- [ ] `TypeError`
+- [ ] `True`
 
 ### Évaluer `s` après l'exécution du code suivant :
 
@@ -73,17 +156,28 @@ for i in range(5):
 ```
 
 
-- [ ] 10
 - [ ] 15
 - [ ] 0
+- [ ] 10
 
-### Évaluer `2 + 2 == 4`
+## Histoire
+
+### 1515
 
 
 
-- [ ] `TypeError`
-- [ ] Vrai
-- [ ] `True`
+
+- [ ] Le sacre de Charlemagne à Reims
+- [ ] Marignan
+- [ ] La commune de Paris
+
+### Napoléon est un...
+
+
+
+- [ ] Grec
+- [ ] Monument
+- [ ] Corse
 
 ## maths
 
@@ -99,22 +193,96 @@ for i in range(5):
 
 
 
-- [ ] 8
-- [ ] 6
 - [ ] 4
+- [ ] 6
+- [ ] 8
+
+## anglais
+
+### Where is brian ?
+
+
+
+- [ ] car
+- [ ] house
+- [ ] kitchen
+
+### How do you do ?
+
+
+
+- [ ] Hungry
+- [ ] Congratulations
+- [ ] Fine thank you
 
 
 
 \newpage
 
+## Histoire
+
+### Napoléon est un...
+
+
+
+- [ ] Monument
+- [ ] Grec
+- [ ] Corse
+
+### 1515
+
+
+
+
+- [ ] Marignan
+- [ ] Le sacre de Charlemagne à Reims
+- [ ] La commune de Paris
+
+## Géographie
+
+### Paris est une ville du...
+
+
+
+
+- [ ] Texas
+- [ ] Kazaksthan
+- [ ] Groenland
+
+### Capitale de la France ?
+
+
+
+- [ ] Ici c'est Paris
+- [ ] Hazebrouck
+- [ ] Lille, le LOSC !
+
+## anglais
+
+### Where is brian ?
+
+
+
+- [ ] house
+- [ ] car
+- [ ] kitchen
+
+### How do you do ?
+
+
+
+- [ ] Fine thank you
+- [ ] Congratulations
+- [ ] Hungry
+
 ## maths
 
 ### Calculer $2^3$
 
 
 
-- [ ] 4
 - [ ] 6
+- [ ] 4
 - [ ] 8
 
 ### Calculer $1 +1$
@@ -131,9 +299,9 @@ for i in range(5):
 
 
 
-- [ ] `TypeError`
-- [ ] Vrai
 - [ ] `True`
+- [ ] Vrai
+- [ ] `TypeError`
 
 ### Évaluer `s` après l'exécution du code suivant :
 
@@ -145,9 +313,9 @@ for i in range(5):
 ```
 
 
-- [ ] 15
-- [ ] 10
 - [ ] 0
+- [ ] 10
+- [ ] 15
 
 
 

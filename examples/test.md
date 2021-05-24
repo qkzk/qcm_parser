@@ -53,3 +53,47 @@ for i in range(5):
 - [ ] 15
 - [ ] 0
 
+## anglais
+
+### Where is brian ?
+
+- [x] kitchen
+- [ ] house
+- [ ] car
+
+### How do you do ?
+
+- [x] Fine thank you
+- [ ] Hungry
+- [ ] Congratulations
+
+## Géographie
+
+### Capitale de la France ?
+
+- [x] Ici c'est Paris
+- [ ] Lille, le LOSC !
+- [ ] Hazebrouck
+
+### Paris est une ville du...
+
+
+- [x] Texas
+- [ ] Groenland
+- [ ] Kazaksthan
+
+## Histoire
+
+### Napoléon est un...
+
+- [x] Corse
+- [ ] Grec
+- [ ] Monument
+
+### 1515
+
+
+- [x] Marignan
+- [ ] La commune de Paris
+- [ ] Le sacre de Charlemagne à Reims
+

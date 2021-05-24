@@ -36,7 +36,7 @@ header-includes:
 - \\pagestyle{{fancy}} 
 - \\fancyhead[C]{{ {0} }}
 - \\fancyhead[LE,LO,RE,RO]{{}} 
-- \\fancyfoot[C]{{\\thepage}} 
+- \\fancyfoot[C]{{ }} 
 - \\thispagestyle{{fancy}} 
 - \\usepackage{{tcolorbox}} 
 - \\newtcolorbox{{myquote}}{{colback=teal!10!white, colframe=teal!55!black}}
@@ -181,17 +181,37 @@ class QCM_Creator:
         string = self.qcm.header if first else ""
         parts = sample(self.qcm.parts, len(self.qcm.parts))
         for part in parts:
-            string += part.title + "\n"
-            questions = sample(part.questions, len(part.questions))
-            for question in questions:
-                string += question.question_title + "\n"
-                string += question.text + "\n"
-                answsers = sample(question.answers, len(question.answers))
-                for answer in answsers:
-                    string += answer
-                string += "\n"
+            string += self.part_formater(part)
         string += "\n\n\\newpage\n\n"
         return string
+
+    def part_formater(self, part: QCM_Part):
+        """Format a part"""
+        string = part.title + "\n"
+        questions = sample(part.questions, len(part.questions))
+        for question in questions:
+            string += self.question_formater(question)
+        return string
+
+    def question_formater(self, question: QCM_Question) -> str:
+        """Format a question"""
+        string = question.question_title + "\n"
+        string += question.text + "\n"
+        string += self.answers_formater(question)
+        return string
+
+    @staticmethod
+    def answers_formater(question: QCM_Question) -> str:
+        """Format the answers"""
+        string = ""
+        answsers = sample(question.answers, len(question.answers))
+        for answer in answsers:
+            string += answer
+        string += "\n"
+        return string
+
+    def __repr__(self):
+        return self.export()
 
 
 def parse_args() -> tuple[str, int]:
