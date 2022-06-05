@@ -1,52 +1,12 @@
 # QCM parser
 
-```bash
-$ qcm_parser qcm.md 10
-```
+This is an attempt to create a QCM parser as a pip package
 
-génère 10 exemplaires du QCM avec les questions mélangées, appelle pandoc dessus pour en faire
-un pdf
+## The QCM parser 
 
-- [x] lire/parser les arguments
-- [x] lire le doc et repérer les balises {qcm}
-- [x] mélanger les réponses
-- [x] générer les x exemplaires avec ordre aléatoire des questions et des réponses
-- [x] appeler pandoc sur le source généré
+## Installation
 
-## `read_qcm`
+## Use cases
 
-Un QCM est constitué de :
+## Known limitations
 
-* Entête
-
-  ```markdown
-  ---
-  title: "Exemple de QCM"
-  subtitle: "pour tester l'application"
-  author: "qkzk"
-  date: "2021/05/23"
-  theme: "metropolis"
-  geometry: "margin=1.5cm"
-  header-includes: |
-      \usepackage{tcolorbox}
-      \newtcolorbox{myquote}{colback=teal!10!white, colframe=teal!55!black}
-      \renewenvironment{Shaded}{\begin{myquote}}{\end{myquote}}
-
-  ---
-  ```
-
-* Partie : `## partie truc` 
-* Question : `### Combien font 2+2 ?` puis bloc de texte `Choisissez la bonne réponse`
-* Réponses :
-
-  ```md
-  - [x] bonne réponse
-  - [ ] mauvaise réponse
-
-  ```
-
-
-## Attention
-
-* L'entête doit contenir un champ `title: "blablabla"` qui partira dans l'entête,
-* Idéalement le QCM fait une page
