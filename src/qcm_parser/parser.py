@@ -5,6 +5,7 @@ date: 2021/06/28
 """
 import re
 from html import escape
+from typing import List, Tuple
 
 import markdown
 
@@ -228,7 +229,7 @@ class QCM_Question:
                 return index + 1, no_p_markdown(line[4:])
         raise QCM_QuestionError(f"The question has no title")
 
-    def read_text(self) -> tuple[str, int]:
+    def read_text(self) -> Tuple[str, int]:
         """
         Read the 'text' of the question, the lines below the title and
         before the answer.
@@ -252,7 +253,7 @@ class QCM_Question:
                     return "".join(self.lines[self.start_text : end]), end
         raise QCM_QuestionError(f"No text found for question {self}")
 
-    def read_answers(self) -> list["QCM_Answer"]:
+    def read_answers(self) -> List["QCM_Answer"]:
         """
         Returns a list of answers from the content.
         Set the `is_text_question` flag if it's a text question.
