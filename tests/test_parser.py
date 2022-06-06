@@ -2,7 +2,7 @@ import os
 import os.path
 
 os.sys.path.append(os.path.dirname("../src/qcm_parser/"))
-from parser import ParseQCM
+from parser import ParseQCM, ParseQCMError
 
 
 def test_parser_web():
@@ -60,9 +60,7 @@ for i in range(5):
     assert qcm.title == "Exemple de QCM", "wrong title"
 
     assert qcm.parts[0].title == "Un exemple avec une image", "wrong part title"
-    assert (
-        qcm.parts[0].questions[0].question_title == "Qui est-ce ?"
-    ), "wrong question title"
+    assert qcm.parts[0].questions[0].title == "Qui est-ce ?", "wrong question title"
     assert (
         qcm.parts[0].questions[0].text
         == """<p><img alt="personne" src="https://media.vogue.fr/photos/5d8c8e536f878f000880cbd5/16:9/w_1920%2Cc_limit/000_ARP4090096.jpg" /></p>"""
@@ -70,7 +68,7 @@ for i in range(5):
 
     assert qcm.parts[-2].title == "info : des exemples avec du code"
     assert (
-        qcm.parts[-2].questions[1].question_title
+        qcm.parts[-2].questions[1].title
         == "Évaluer <code>s</code> après l'exécution du code suivant :"
     )
     assert (
@@ -84,8 +82,8 @@ for i in range(5):
     assert qcm.parts[-1].questions[-1].is_text_question, "didn't detect text question"
     answers = qcm.parts[0].questions[0].answers
     assert answers[0].is_valid, "answer should be valid"
-    assert answers[0].text == "Jacques Chirac", "didn't parse right correctly"
-    assert answers[1].text == "Raymond Barre", "didn't parse wrong answer correctly"
+    assert answers[0].title == "Jacques Chirac", "didn't parse right correctly"
+    assert answers[1].title == "Raymond Barre", "didn't parse wrong answer correctly"
 
 
 def test_parser_pdf():
@@ -93,11 +91,9 @@ def test_parser_pdf():
 
     assert qcm.title == """Exemple de QCM""", "wrong title"
     assert qcm.parts[0].title == "Un exemple avec une image\n", "wrong part title"
-    assert (
-        qcm.parts[1].questions[0].question_title == "Calculer $2^3$\n"
-    ), "wrong question title"
+    assert qcm.parts[1].questions[0].title == "Calculer $2^3$\n", "wrong question title"
     assert qcm.parts[1].questions[0].answers[0].is_valid, "this answer should be valid"
-    assert qcm.parts[1].questions[0].answers[0].text == " 8\n", "wrong question text"
+    assert qcm.parts[1].questions[0].answers[0].title == " 8\n", "wrong question text"
     assert (
         qcm.parts[-2].questions[-1].text
         == """
@@ -109,6 +105,12 @@ for i in range(5):
 
 """
     ), "wrong question text"
+
+    try:
+        qcm = ParseQCM.from_file("../example/example.md", mode="thing")
+        raise AssertionError("Should have crashed, from unknown mode")
+    except ParseQCMError:
+        pass
 
 
 def test_all():
