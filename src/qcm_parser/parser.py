@@ -222,7 +222,7 @@ class QCM_Question:
 
     @property
     def answers(self) -> List["QCM_Answer"]:
-        """Questions in this part"""
+        """Answers in this part"""
         return self._answers
 
     @property
