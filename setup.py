@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="qcm_parser",
-    version="0.1.0",
+    version="0.1.1",
     author="qkzk",
     author_email="qu3nt1n@gmail.com",
     description="A parser of QCM file",

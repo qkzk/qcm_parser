@@ -4,7 +4,6 @@ author: qkzk
 date: 2021/06/28
 """
 import re
-from html import escape
 from typing import List, Tuple
 
 import markdown
@@ -52,9 +51,7 @@ class ParseQCM:
                 is_code_block = not is_code_block
             if not is_code_block and "title: " in line and not "subtitle" in line:
                 start = line.index(":") + 2
-                title = escape(
-                    line[start:-1].strip().replace('"', "").replace("''", "")
-                )
+                title = line[start:-1].strip().replace('"', "").replace("''", "")
             if not is_code_block and line.startswith("# "):
                 title = no_p_markdown(line[2:])
         if not title:
@@ -161,7 +158,7 @@ class QCM_Part:
         """Read the title of the part and returns its position and content"""
         for index, line in enumerate(self.lines):
             if line.startswith("## "):
-                return index + 1, escape(no_p_markdown(line[3:]))
+                return index + 1, no_p_markdown(line[3:])
         raise QCM_PartError(f"No title found for this part : {self}")
 
     def read_questions(self) -> list:
