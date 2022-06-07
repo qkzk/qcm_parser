@@ -41,9 +41,9 @@ print(qcm.title)
 for part in qcm.parts:
     print(part.title)
     for question in part.questions:
-        print(question.question_title)
+        print(question.title)
         print(question.text)
-        for answer in question.answers:
+        for answer in question.title:
             print(answer.answer)
 ```
 
@@ -54,7 +54,7 @@ There's 2 modes :
 * for web export (`qcm_part.from_file(filename, mode="web")`), the default one, `mode` named parameter can be ommitted.
 * for pdf export (`qcm_part.from_file(filename, mode="pdf")`).
 
-The `mode=web` should be used if you want to serve a QCM like I do here.
+The `mode=web` should be used if you want to serve a QCM like I do [here](https://github.com/qkzk/qcm_alchemy)
 
 It replaces `markdown` syntax with `html` syntax using `markdown` module.
 
