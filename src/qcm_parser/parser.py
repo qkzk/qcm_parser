@@ -145,6 +145,7 @@ class QCM_Part:
         self._lines = lines
         self._parsers = parsers
         self._start_questions, self._title = self._read_title()
+        self._text = self._read_text()
         self._questions_lines = self._read_questions()
         self._questions = [
             self._read_question(start, end) for start, end in self._questions_lines
@@ -169,6 +170,19 @@ class QCM_Part:
             if line.startswith("## "):
                 return index + 1, self._parsers.line(line[3:])
         raise QCM_PartError(f"No title found for this part : {self}")
+
+    def _read_text(self) -> str:
+        start = False
+        text = []
+        for line in self._lines:
+            if line.startswith("## "):
+                start = True
+                continue
+            if line.startswith("### "):
+                break
+            if start:
+                text.append(line)
+        return "\n".join(text)
 
     def _read_questions(self) -> list:
         """Returns a list of line indexes questions"""

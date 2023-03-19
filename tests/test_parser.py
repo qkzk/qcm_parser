@@ -19,6 +19,8 @@ def test_parser_web():
 
 ## maths : un exemple avec du LaTeX
 
+Ce texte présente la partie
+
 ### Calculer $2^3$
 
 - [x] 8
@@ -46,6 +48,8 @@ for i in range(5):
 - [ ] 0
 
 ## Français
+
+Texte présentant la partie
 
 ### Un exemple avec une zone de texte
 
