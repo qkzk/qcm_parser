@@ -5,7 +5,7 @@ date: 2023/06/08
 """
 from typing import List, Tuple, Type
 
-from string_parsers import StringParsers, WebParsers, PDFParsers
+from .string_parsers import StringParsers, WebParsers, PDFParsers
 
 
 class ParseQCMError(Exception):

@@ -1,8 +1,8 @@
 import os
 import os.path
 
-# os.sys.path.append(os.path.dirname("../src/qcm_parser/"))
-from parserz import ParseQCM, ParseQCMError
+os.sys.path.append(os.path.dirname("../src/qcm_parser/"))
+from parser import ParseQCM, ParseQCMError
 
 
 def test_parser_web():
@@ -55,7 +55,7 @@ for i in range(5):
 
 - [t]
 """
-    qcm = ParseQCM.from_file("example.md", mode="web")
+    qcm = ParseQCM.from_file("../example.md", mode="web")
     assert repr(qcm) == expected_string, "Parsing example failed"
 
     assert qcm.title == "Exemple de QCM", "wrong title"
@@ -88,7 +88,7 @@ for i in range(5):
 
 
 def test_parser_pdf():
-    qcm = ParseQCM.from_file("example.md", mode="pdf")
+    qcm = ParseQCM.from_file("../example.md", mode="pdf")
 
     assert qcm.title == """Exemple de QCM""", "wrong title"
     assert qcm.parts[0].title == "Un exemple avec une image\n", "wrong part title"
@@ -108,7 +108,7 @@ for i in range(5):
     ), "wrong question text"
 
     try:
-        qcm = ParseQCM.from_file("example.md", mode="thing")
+        qcm = ParseQCM.from_file("../example.md", mode="thing")
         raise AssertionError("Should have crashed, from unknown mode")
     except ParseQCMError:
         pass
