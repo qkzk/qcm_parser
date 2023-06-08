@@ -1,11 +1,11 @@
 """
 title: QCM parser
 author: qkzk
-date: 2021/06/28
+date: 2023/06/08
 """
 from typing import List, Tuple, Type
 
-from .string_parsers import StringParsers, WebParsers, PDFParsers
+from string_parsers import StringParsers, WebParsers, PDFParsers
 
 
 class ParseQCMError(Exception):
@@ -144,7 +144,8 @@ class QCM_Part:
     def __init__(self, lines: list, parsers: Type[StringParsers]):
         self._lines = lines
         self._parsers = parsers
-        self._start_questions, self._title = self._read_title()
+        self._start_text, self._title = self._read_title()
+        self._text, self._start_questions = self._read_text()
         self._questions_lines = self._read_questions()
         self._questions = [
             self._read_question(start, end) for start, end in self._questions_lines
@@ -154,6 +155,11 @@ class QCM_Part:
     def title(self) -> str:
         """Part title"""
         return self._title
+
+    @property
+    def text(self) -> str:
+        """Question sub text"""
+        return self._text
 
     @property
     def questions(self) -> List["QCM_Question"]:
@@ -169,6 +175,24 @@ class QCM_Part:
             if line.startswith("## "):
                 return index + 1, self._parsers.line(line[3:])
         raise QCM_PartError(f"No title found for this part : {self}")
+
+    def _read_text(self) -> Tuple[str, int]:
+        """
+        Read the 'text' of the question, the lines below the title and
+        before the answer.
+        """
+        for index, line in enumerate(
+            self._lines[self._start_text :], start=self._start_text
+        ):
+            if line.startswith("###"):
+                end = index
+                return (
+                    self._parsers.bloc(
+                        self._lines[self._start_text : end],
+                    ),
+                    end,
+                )
+        raise QCM_PartError(f"No text found for question {self}")
 
     def _read_questions(self) -> list:
         """Returns a list of line indexes questions"""

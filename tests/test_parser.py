@@ -1,12 +1,14 @@
 import os
 import os.path
 
-os.sys.path.append(os.path.dirname("../src/qcm_parser/"))
-from parser import ParseQCM, ParseQCMError
+# os.sys.path.append(os.path.dirname("../src/qcm_parser/"))
+from parserz import ParseQCM, ParseQCMError
 
 
 def test_parser_web():
     expected_string = """## Un exemple avec une image
+
+texte de la partie
 
 ### Qui est-ce ?
 
@@ -52,9 +54,8 @@ for i in range(5):
 Écrire un sonnet.
 
 - [t]
-
 """
-    qcm = ParseQCM.from_file("../example/example.md", mode="web")
+    qcm = ParseQCM.from_file("example.md", mode="web")
     assert repr(qcm) == expected_string, "Parsing example failed"
 
     assert qcm.title == "Exemple de QCM", "wrong title"
@@ -73,11 +74,11 @@ for i in range(5):
     )
     assert (
         qcm.parts[-2].questions[1].text
-        == """<div class="codehilite"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+        == """<div class="codehilite"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
   <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span>
-</pre></div>"""
-    )
+</code></pre></div>"""
+    ), (qcm.parts[-2].questions[1].text)
 
     assert qcm.parts[-1].questions[-1].is_text_question, "didn't detect text question"
     answers = qcm.parts[0].questions[0].answers
@@ -87,7 +88,7 @@ for i in range(5):
 
 
 def test_parser_pdf():
-    qcm = ParseQCM.from_file("../example/example.md", mode="pdf")
+    qcm = ParseQCM.from_file("example.md", mode="pdf")
 
     assert qcm.title == """Exemple de QCM""", "wrong title"
     assert qcm.parts[0].title == "Un exemple avec une image\n", "wrong part title"
@@ -107,7 +108,7 @@ for i in range(5):
     ), "wrong question text"
 
     try:
-        qcm = ParseQCM.from_file("../example/example.md", mode="thing")
+        qcm = ParseQCM.from_file("example.md", mode="thing")
         raise AssertionError("Should have crashed, from unknown mode")
     except ParseQCMError:
         pass
